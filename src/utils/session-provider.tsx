@@ -3,6 +3,7 @@
 import { SessionProvider } from "next-auth/react";
 
 import { Session } from "next-auth";
+import { ReduxProvider } from "./redux-provider";
 
 type TypeOfPageProps = Readonly<{
     children: React.ReactNode;
@@ -10,5 +11,15 @@ type TypeOfPageProps = Readonly<{
 }>;
 
 export default function Provider({ children, session }: TypeOfPageProps) {
-  return <SessionProvider session={session}>{children}</SessionProvider>;
+  
+  return <SessionProvider session={session}>
+    
+    <ReduxProvider>
+     
+     {children}
+
+    </ReduxProvider>
+    
+  </SessionProvider>;
+  
 }
