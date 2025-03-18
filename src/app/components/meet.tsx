@@ -1,18 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import NavbarComponent from './navbar'
 import { useSession} from "next-auth/react";
+
 
 const MeetComponent = () => {
 
     const { data: session } = useSession();
+    const [open, setOpen] = useState(false);
     
+
+    const handleOpen = () => setOpen(!open);
+
   return (
     <>
         {/* navbar */}
         <NavbarComponent/>
 
-        {/* meet component */}
-        <div>
+        
+        
           <h1 className='subheading-fontSize text-center'>Welcome, {session?.user?.name ?? "Unknown User"}</h1>
           
         
@@ -24,13 +29,15 @@ const MeetComponent = () => {
           
           <div className='flex justify-center mt-8'>
             
-            <button className='bg-primary p-2 rounded-md flex items-center gap-2'>
+            <button onClick={handleOpen} className='bg-primary p-2 rounded-md flex items-center gap-2 subparagraph-fontSize'>
               New Meet
             </button>
 
           </div>
+
           
-        </div>
+          
+        
       
     </>
   )
