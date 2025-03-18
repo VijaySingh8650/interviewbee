@@ -15,7 +15,7 @@ It will run on  [http://localhost:3000](http://localhost:3000)
 
 ## Tech Stack 
 ```
- NextJS, TypeScript, Redux
+ NextJS, TypeScript, Redux, Tailwind CSS
 
 ```
 Instead of React, Next is better for inbuilt routing, server component, hot module replacement, 404 page and many more.
