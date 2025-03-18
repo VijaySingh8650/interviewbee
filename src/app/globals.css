@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.heading-fontSize{
+  @apply text-4xl;
+}
+
+.subheading-fontSize{
+  @apply text-2xl;
+}
+
+.paragraph-fontSize{
+  @apply text-xl;
+}
+
+.subparagraph-fontSize{
+  @apply text-base;
+}
+
