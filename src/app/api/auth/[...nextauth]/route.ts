@@ -1,8 +1,7 @@
 import NextAuth, { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-import { NextRequest, NextResponse } from "next/server";
 
-const authOptions: NextAuthOptions = {
+ const authOptions: NextAuthOptions = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID ?? "",
@@ -11,7 +10,7 @@ const authOptions: NextAuthOptions = {
   ],
   secret: process.env.NEXTAUTH_SECRET,
   session: {
-    strategy: "jwt",
+    strategy: "jwt", // ✅ Ensure JWT is used for sessions
   },
   callbacks: {
     async jwt({ token, account, profile }) {
@@ -33,11 +32,6 @@ const authOptions: NextAuthOptions = {
   },
 };
 
+// ✅ Fix: Export both GET and POST methods
 const handler = NextAuth(authOptions);
-export async function GET(req: NextRequest) {
-  return handler(req) as Promise<NextResponse>;
-}
-
-export async function POST(req: NextRequest) {
-  return handler(req) as Promise<NextResponse>;
-}
+export { handler as GET, handler as POST };
