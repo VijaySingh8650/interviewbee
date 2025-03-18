@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Provider from "@/utils/session-provider";
 
-
+import { Inter } from "next/font/google";
+const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
   title: "InterviewBee",
@@ -16,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
  
-    <html lang="en">
+    <html lang="en" className={inter.className}>
       <body>
         <Provider>
 
