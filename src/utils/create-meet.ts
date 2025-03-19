@@ -1,10 +1,7 @@
-import { authOptions } from "@/utils/constants";
-import { getServerSession } from "next-auth";
 
-export async function createGoogleMeet(startDateTime: string) {
-  const session = await getServerSession(authOptions);
+export async function createGoogleMeet(startDateTime: string, accessToken:string) {
 
-  if (!session || !session.accessToken) {
+  if (!accessToken) {
     throw new Error("Unauthorized: No access token");
   }
 
@@ -14,7 +11,7 @@ export async function createGoogleMeet(startDateTime: string) {
       {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${session.accessToken}`,
+          Authorization: `Bearer ${accessToken}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({

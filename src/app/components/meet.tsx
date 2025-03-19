@@ -44,7 +44,7 @@ const MeetComponent = () => {
     handleFutureModalOpen();
    }
 
-   const link: string  = await createGoogleMeet(schedule.toISOString());
+   const link: string  = await createGoogleMeet(schedule.toISOString(), session?.accessToken as string);
   
    
     dispatch(updateMeet({ time, day, month, year, dayNumber, link })); //updating the redux store with the schedule data
