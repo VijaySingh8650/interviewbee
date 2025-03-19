@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+
 
 export const getDateTimeDayMonth = (date: Date) => {
   
@@ -12,10 +12,7 @@ export const getDateTimeDayMonth = (date: Date) => {
 
 };
 
-export const generateMeetLink =() => {
-  const uniqueId = uuidv4().split('-')[0]; // Shorten UUID
-  return `https://meet.google.com/${uniqueId}`;
-}
+
 
 
 

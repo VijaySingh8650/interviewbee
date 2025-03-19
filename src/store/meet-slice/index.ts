@@ -6,6 +6,7 @@ export type TyoeOfInitialState =  {
     month: string;
     year: string;
     dayNumber: string;
+    link:string;
   }
   
   const initialState: TyoeOfInitialState = {
@@ -13,7 +14,8 @@ export type TyoeOfInitialState =  {
     day:"",
     month:"",
     year:"",
-    dayNumber:""
+    dayNumber:"",
+    link: "",
   };
 
   const meetSlice = createSlice({
@@ -29,6 +31,7 @@ export type TyoeOfInitialState =  {
                 month: action.payload.month,
                 year: action.payload.year,
                 dayNumber: action.payload.dayNumber,
+                link: action.payload.link
               };
             }
      }

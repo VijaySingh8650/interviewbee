@@ -7,6 +7,8 @@ import { updateMeet } from "@/store/meet-slice";
 import ScheduledTime from "./scheduled-time";
 import AvailableMeets from "./meetings-modal/available-meets";
 import FutureScheduleModal from "./meetings-modal/future-schedule-modal";
+import { createGoogleMeet } from "@/utils/create-meet";
+
 
 const MeetComponent = () => {
   const { data: session } = useSession();
@@ -27,7 +29,7 @@ const MeetComponent = () => {
     setFutureOpen(!futureOpen);
   };
 
-  const scheduleTheMeet = (schedule: Date) => {
+  const scheduleTheMeet = async(schedule: Date) => {
     
 
     const { time, day, month, year, dayNumber } = getDateTimeDayMonth(schedule);
@@ -41,8 +43,11 @@ const MeetComponent = () => {
    if(futureOpen){
     handleFutureModalOpen();
    }
+
+   const link: string  = await createGoogleMeet(schedule.toISOString());
+  
    
-    dispatch(updateMeet({ time, day, month, year, dayNumber })); //updating the redux store with the schedule data
+    dispatch(updateMeet({ time, day, month, year, dayNumber, link })); //updating the redux store with the schedule data
   };
 
 
@@ -91,6 +96,8 @@ const MeetComponent = () => {
         handleOpen={handleFutureModalOpen}
         scheduleTheMeet = {scheduleTheMeet}
       />
+
+  
 
       {/* Scheduled-meeting */}
       <ScheduledTime />
